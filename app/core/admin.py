@@ -11,8 +11,9 @@ class UserAdmin(BaseUserAdmin):
     list_display = ['email', 'name']
     fieldsets=(
         (None, {'fields': ('email', 'password')}),
+        (_('Personal Info'), {'fields': ('name',)}),
         (
-            _('Personal Info'),
+            _('Permissions'),
             {
                 'fields': (
                     'is_active',
@@ -23,7 +24,7 @@ class UserAdmin(BaseUserAdmin):
         ),
         (_('Important dates'), {'fields': ('last_login',)}),
     )
-    readonly_fields = ('last_login',)
+    readonly_fields = ['last_login',]
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
@@ -41,3 +42,4 @@ class UserAdmin(BaseUserAdmin):
 
 admin.site.register(models.User, UserAdmin)
 admin.site.register(models.Recipe)
+admin.site.register(models.Tag)

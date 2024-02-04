@@ -59,7 +59,7 @@ class IngredientViewSet(
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
     
-    def get_querysest(self):
+    def get_queryset(self):
         """Return ingredients for authenticated user"""
         return self.queryset.filter(user=self.request.user).order_by('-name')
     
